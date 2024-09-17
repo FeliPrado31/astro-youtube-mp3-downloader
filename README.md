@@ -25,7 +25,7 @@ To install and run this project locally, follow these steps:
 
    ```bash
    git clone https://github.com/FeliPrado31/astro-youtube-mp3-downloader.git
-   cd your-repository
+   cd astro-youtube-mp3-downloader
    ```
 
 2. **Install dependencies**:
