@@ -41,7 +41,7 @@ To install and run this project locally, follow these steps:
    ```
 
 4. **Access the application**:
-   Open your browser and visit `http://localhost:3000`.
+   Open your browser and visit `http://localhost:4321/`.
 
 ## Legal Considerations ⚖️
 
