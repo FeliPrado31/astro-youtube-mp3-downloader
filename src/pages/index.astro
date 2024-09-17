@@ -1,16 +1,55 @@
 ---
+import Button from "../components/Button.astro";
+import Input from "../components/Input.astro";
+import VisitorCounter from "../components/VisitorCounter.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 
+import { Download } from "lucide-react";
+
+import { incrementVisitors } from "../increment-visitors.js";
+import db from "../db.js";
+
+await incrementVisitors();
+await db.read();
+
+import "@/styles/globals.css";
+
+const visitorCount = db.data.visitors;
+
+const handleDownload = () => {
+  // Implement download logic here
+  console.log("Downloading:", url);
+};
+
+let url = "";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<div class='min-h-screen bg-gray-100 flex flex-col'>
+  <VisitorCounter count={visitorCount} />
+  <div class='flex-grow flex flex-col items-center justify-center p-4'>
+    <div class='w-full max-w-md space-y-8'>
+      <Header
+        title='YouTube MP3 Downloader'
+        description='Enter a YouTube URL to download as MP3'
+      />
+      <div class='mt-8 space-y-6'>
+        <Input
+          type='url'
+          placeholder='https://www.youtube.com/watch?v=...'
+          value={url}
+          onInput={(e) => (url = e.target.value)}
+          className='block w-full'
+        />
+        <Button
+          onClick={handleDownload}
+          className='w-full flex justify-center items-center'
+        >
+          <Download className='mr-2 h-4 w-4' />
+          Download MP3
+        </Button>
+      </div>
+    </div>
+  </div>
+  <Footer />
+</div>

@@ -1,0 +1,11 @@
+---
+const { type, placeholder, value, onInput, class: className } = Astro.props;
+---
+
+<input
+  type={type}
+  placeholder={placeholder}
+  value={value}
+  oninput={onInput}
+  class={`block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 ${className}`}
+/>
